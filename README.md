@@ -1,3 +1,6 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/ruhdevops/System-Automation-Hub/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/ruhdevops/System-Automation-Hub/tree/main)
+
+
 # ⚙️ 𝙎𝙮𝙨𝙩𝙚𝙢 𝘼𝙪𝙩𝙤𝙢𝙖𝙩𝙞𝙤𝙣 𝙃𝙪𝙗
 
 ### 🚀 *Your Event-Driven Machine Control Plane*
