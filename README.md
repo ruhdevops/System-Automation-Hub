@@ -1,4 +1,4 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/ruhdevops/System-Automation-Hub/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/ruhdevops/System-Automation-Hub/tree/main)
+[![PowerShell CI](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/powershell-ci.yml/badge.svg?branch=main)](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/powershell-ci.yml)
 
 
 # ⚙️ 𝙎𝙮𝙨𝙩𝙚𝙢 𝘼𝙪𝙩𝙤𝙢𝙖𝙩𝙞𝙤𝙣 𝙃𝙪𝙗
