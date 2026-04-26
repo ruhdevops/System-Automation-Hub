@@ -1,6 +1,9 @@
 [![PowerShell CI](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/powershell-ci.yml/badge.svg?branch=main)](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/powershell-ci.yml)
 
 
+[![CodeQL Analysis](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/codeql.yml/badge.svg)](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/codeql.yml)
+
+
 [![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/jekyll-gh-pages.yml/badge.svg?branch=main)](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/jekyll-gh-pages.yml)
 
 
