@@ -1,6 +1,9 @@
 [![PowerShell CI](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/powershell-ci.yml/badge.svg?branch=main)](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/powershell-ci.yml)
 
 
+[![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/jekyll-gh-pages.yml/badge.svg?branch=main)](https://github.com/ruhdevops/System-Automation-Hub/actions/workflows/jekyll-gh-pages.yml)
+
+
 # ⚙️ 𝙎𝙮𝙨𝙩𝙚𝙢 𝘼𝙪𝙩𝙤𝙢𝙖𝙩𝙞𝙤𝙣 𝙃𝙪𝙗
 
 ### 🚀 *Your Event-Driven Machine Control Plane*
