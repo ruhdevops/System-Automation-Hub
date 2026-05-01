@@ -1,4 +1,37 @@
 ﻿[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+<#
+.SYNOPSIS
+    Generates GitHub Actions workflow files for certificate downloading and
+    PowerShell CI into .github\workflows\.
+
+.DESCRIPTION
+    Creates (or overwrites) two workflow YAML files:
+
+    1. download-cert.yml  – A manually-triggered (workflow_dispatch) workflow
+       that accepts a certificate URL and filename as inputs, downloads the
+       certificate with curl, and uploads it as a build artifact.
+
+    2. powershell-ci.yml  – A push/PR/manual CI workflow that runs on a
+       3-OS matrix (ubuntu-latest, windows-latest, macos-latest).  Each job:
+         a. Installs PSScriptAnalyzer and Pester from the PSGallery.
+         b. Runs PSScriptAnalyzer at Error/Warning severity, filtering for
+            security-related rules.
+         c. Executes Pester tests found in ./tests (if the directory exists).
+
+    The .github\workflows directory is created if it does not already exist.
+
+.PARAMETER (none)
+    This script accepts no parameters.
+
+.EXAMPLE
+    .\create-download-cert.ps1
+    # Writes both workflow files and confirms their paths on success.
+
+.NOTES
+    - Run from the repository root.
+    - Existing workflow files with the same names will be overwritten silently.
+    - PSAvoidUsingWriteHost is suppressed intentionally for status output.
+#>
 param()
 # Workflow folder
 $workflowDir = ".github\workflows"

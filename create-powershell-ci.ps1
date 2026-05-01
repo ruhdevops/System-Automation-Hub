@@ -1,4 +1,37 @@
 ﻿[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+<#
+.SYNOPSIS
+    Generates the PowerShell CI GitHub Actions workflow file.
+
+.DESCRIPTION
+    Creates (or overwrites) .github\workflows\powershell-ci.yml with a
+    multi-OS CI pipeline that:
+
+      - Triggers on pushes and pull requests to the main branch, and also
+        supports manual dispatch (workflow_dispatch).
+      - Runs on a 3-OS matrix: ubuntu-latest, windows-latest, macos-latest.
+      - Installs PSScriptAnalyzer and Pester from the PowerShell Gallery.
+      - Executes a PSScriptAnalyzer security scan (Error/Warning severity,
+        security rules only) and fails the job if any issues are detected.
+      - Runs Pester tests from the ./tests directory (if present) and fails
+        the job if any tests fail.
+
+    The .github\workflows directory is created automatically if absent.
+
+.PARAMETER (none)
+    This script accepts no parameters.
+
+.EXAMPLE
+    .\create-powershell-ci.ps1
+    # Writes powershell-ci.yml and prints the file path on success.
+
+.NOTES
+    - Run from the repository root so the workflow path resolves correctly.
+    - This script generates only powershell-ci.yml.  Use
+      create-download-cert.ps1 to also generate download-cert.yml.
+    - Existing files with the same name will be overwritten silently.
+    - PSAvoidUsingWriteHost is suppressed intentionally for status output.
+#>
 param()
 
 # Workflow folder
