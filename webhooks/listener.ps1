@@ -1,7 +1,47 @@
-﻿[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
-# =============================================
-# System Automation Hub - Webhook Listener
-# =============================================
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+<#
+.SYNOPSIS
+    HTTP webhook listener for the System Automation Hub.
+
+.DESCRIPTION
+    Starts a .NET HttpListener on port 9000 (http://localhost:9000/) and
+    processes incoming HTTP requests in a synchronous loop.
+
+    For each request the listener:
+      1. Reads the request body (if present).
+      2. Immediately sends a fixed acknowledgement response to minimise latency
+         for the caller (e.g. GitHub Webhooks expects a fast 200 OK).
+      3. Logs the timestamp, HTTP method, source IP, and request body to the
+         console.  JSON payloads are pretty-printed; other content types are
+         logged verbatim.
+
+    The listener detects whether a request originates from GitHub by inspecting
+    the User-Agent header for the "GitHub-Hookshot" substring and decorates the
+    log output accordingly.
+
+    Run start-automation.ps1 instead of invoking this script directly; that
+    launcher script also starts an ngrok tunnel and provides the public URL to
+    register as a GitHub webhook endpoint.
+
+.PARAMETER (none)
+    This script accepts no parameters.
+
+.EXAMPLE
+    # Start the listener directly (interactive testing):
+    .\webhooks\listener.ps1
+
+    # Send a test event with curl:
+    curl -X POST http://localhost:9000/ -d '{"test":"hello"}' -H 'Content-Type: application/json'
+
+.NOTES
+    - Requires PowerShell 5.1+ or PowerShell 7+.
+    - The HttpListener binds to localhost only; use ngrok or a reverse proxy
+      to expose it to the internet.
+    - PSAvoidUsingWriteHost is suppressed intentionally for coloured console
+      output in interactive sessions.
+    - The early-response optimisation (sending the HTTP response before logging)
+      is deliberate; do not move the response write after the logging block.
+#>
 param()
 
 $port = 9000

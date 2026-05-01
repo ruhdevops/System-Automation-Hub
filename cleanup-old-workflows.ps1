@@ -1,4 +1,29 @@
 ﻿[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+<#
+.SYNOPSIS
+    Interactively removes stale GitHub Actions workflow files from the
+    repository.
+
+.DESCRIPTION
+    Iterates over a predefined list of file paths (relative to the repository
+    root) that are no longer needed.  Glob patterns are supported, so entries
+    like "*.bak" match multiple files.
+
+    For each matched file the script prompts the operator for confirmation
+    before deletion, ensuring no files are removed without explicit consent.
+
+.PARAMETER (none)
+    This script accepts no parameters.
+
+.EXAMPLE
+    .\cleanup-old-workflows.ps1
+    # Prompts for each stale workflow file and deletes those confirmed with "Y".
+
+.NOTES
+    - Run from the repository root so that relative paths resolve correctly.
+    - Files not found on disk are reported but do not cause an error.
+    - PSAvoidUsingWriteHost is suppressed intentionally for interactive output.
+#>
 param()
 # Files to remove (relative to repo root)
 $filesToDelete = @(

@@ -1,4 +1,36 @@
 ﻿[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+<#
+.SYNOPSIS
+    Manually triggers a GitHub Actions workflow via the repository dispatch API.
+
+.DESCRIPTION
+    Lists all *.yml workflow files found in .github/workflows, prompts the
+    operator to choose one, then uses the GitHub REST API
+    (POST /repos/{owner}/{repo}/actions/workflows/{workflow}/dispatches)
+    to trigger a workflow_dispatch event on the main branch.
+
+    Authentication is handled through the GITHUB_TOKEN environment variable,
+    which must hold a Personal Access Token (PAT) with the repo and workflow
+    scopes.
+
+.PARAMETER (none)
+    This script accepts no parameters; all inputs are collected interactively
+    at runtime.
+
+.EXAMPLE
+    $env:GITHUB_TOKEN = "ghp_..."
+    .\run-workflow-manually.ps1
+    # Lists available workflows, prompts for selection and confirmation,
+    # then dispatches the chosen workflow on the main branch.
+
+.NOTES
+    - GITHUB_TOKEN must be set before running this script.
+    - The target repository is hard-coded as Ruh-Al-Tarikh/System-Automation-Hub.
+      Update $owner and $repo variables to target a different repository.
+    - The workflow must define a workflow_dispatch trigger; otherwise GitHub
+      will return a 422 Unprocessable Entity error.
+    - PSAvoidUsingWriteHost is suppressed intentionally for interactive output.
+#>
 param()
 
 # Hardcoded GitHub Personal Access Token (with repo/workflows scope)
